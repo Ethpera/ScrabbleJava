@@ -21,7 +21,7 @@ public class MatchIA {
 	/* === Constructeur === */
 
 	public MatchIA(String nomJoueur, int difficulte) throws IOException {
-		// charge toutes les instances nécessaires
+		// charge toutes les instances nÃ©cessaires
 		dico = new Dictionnaire("dico.txt");
 		plat = new Plateau();
 		dicoAnagram = new anagramDictionnaire("dico.txt");
@@ -30,7 +30,7 @@ public class MatchIA {
 		joueur = new Joueur(nomJoueur, getNombreLettre());
 		setNombreLettre(joueur.remainingLettersPostBuilder());
 
-		// Vérifiez si player2 essaie de copier le nom du player1
+		// VÃ©rifiez si player2 essaie de copier le nom du player1
 		if (nomJoueur == "ordi")
 			ordi = new Joueur("ordinateur", getNombreLettre());
 		else
@@ -113,7 +113,7 @@ public class MatchIA {
 
 	public Joueur pointsFin() {
 		if (tourActuel().verifierTourPasser() && adversaireActuel().verifierTourPasser()) {
-			// La partie est terminé car il n'y a pas plus de lettres pour les deux personnes.
+			// La partie est terminÃ© car il n'y a pas plus de lettres pour les deux personnes.
 			// Juste comparer qui a plus de points
 			if (tourActuel().verifierScore() == adversaireActuel().verifierScore()) {
 				Joueur gagner = new Joueur("Match Null", getNombreLettre());
@@ -162,7 +162,7 @@ public class MatchIA {
 		}
 	}
 
-	public Mot getBestMove() { // retourne le mot devant être saisi par l'ia (dépend de la difficulté choisie)
+	public Mot getBestMove() { // retourne le mot devant Ãªtre saisi par l'ia (dÃ©pend de la difficultÃ© choisie)
 		permutationSearch pSResult = new permutationSearch(dicoAnagram, dico, plat, ordi.verifierMain(), this.usedWords);
 		Mot retVal = null;
 
@@ -204,7 +204,7 @@ public class MatchIA {
 	public int completeIATurn() {
 		Mot motASaisir = getBestMove();
 		if (motASaisir != null) {
-			// insérer un mot dans le tableau
+			// insÃ©rer un mot dans le tableau
 			proceedWithAction(ordi, motASaisir.getLettres(), motASaisir.verifierX(), motASaisir.verifierY(),
 					motASaisir.verifierHorizontal());
 			return 0;
@@ -215,12 +215,12 @@ public class MatchIA {
 					setNombreLettre(ordi.jeterLettre(i, getNombreLettre()));
 
 				return -1;
-			} else // Juste un autre tour qu'il ne peut rien faire, vérifiez si l'autre joueur ne peut pas aussi gagner ou donner un autre tour sans se déplacer
+			} else // Juste un autre tour qu'il ne peut rien faire, vÃ©rifiez si l'autre joueur ne peut pas aussi gagner ou donner un autre tour sans se dÃ©placer
 			if (tourActuel().verifierTourPasser() && adversaireActuel().verifierTourPasser()) {
-				// Il n'y a plus de lettres et les deux joueurs n'ont rien à jouer
+				// Il n'y a plus de lettres et les deux joueurs n'ont rien Ã  jouer
 				System.out.print("\n\n\t\t=== There aren't more combinations available!!! ===");
 				if (tourActuel().verifierScore() == adversaireActuel().verifierScore()) {
-					// La partie s'est terminée par une égalité (les deux joueurs ont le même nombre de points)
+					// La partie s'est terminÃ©e par une Ã©galitÃ© (les deux joueurs ont le mÃªme nombre de points)
 					System.out.print("\n\n\t\t === MATCH NULL ===");
 					System.out.print("\n\n\t\t   Classement final!!");
 					System.out
@@ -235,7 +235,7 @@ public class MatchIA {
 							.print("\n\t\tJoueur " + joueur.verifierNom() + ": " + joueur.verifierScore() + " points!");
 					System.out.print("\n\t\tJoueur " + ordi.verifierNom() + ": " + ordi.verifierScore() + " points!");
 				}
-				// Déclare la fin du jeu
+				// DÃ©clare la fin du jeu
 				return 1;
 			} else {
 				// Le jeu n'a pas pris fin pour le moment, passez au tour suivant
@@ -247,11 +247,11 @@ public class MatchIA {
 
 	// === Fonction continueWithAction ===
 	// Cette fonction fait presque tout:
-	// - Vérifie si c'est le tour du joueur
-	// - Vérifie si le mot existe dans le dictionnaire
-	// - Vérifie si le mot peut rentrer dans le tableau
+	// - VÃ©rifie si c'est le tour du joueur
+	// - VÃ©rifie si le mot existe dans le dictionnaire
+	// - VÃ©rifie si le mot peut rentrer dans le tableau
 	// - Si tout fonctionne:
-	// - Insère le mot et donne les points au joueur respectif
+	// - InsÃ¨re le mot et donne les points au joueur respectif
 	// - Change le tour
 	// - Retourne "vrai" comme dans "tout allait bien"
 	// - Si quelque chose donne une erreur:
@@ -259,10 +259,10 @@ public class MatchIA {
 	// combinaison de mots
 	//
 	//
-	// Note à tous ceux qui font l'interface: Le but de cette fonction est d'être
-	// utilisé dans la partie de l'interface où tous les mouvements des joueurs sont
-	// enregistrés
-	// Donnez juste tous les paramètres dont il a besoin et il devrait tout faire
+	// Note Ã  tous ceux qui font l'interface: Le but de cette fonction est d'Ãªtre
+	// utilisÃ© dans la partie de l'interface oÃ¹ tous les mouvements des joueurs sont
+	// enregistrÃ©s
+	// Donnez juste tous les paramÃ¨tres dont il a besoin et il devrait tout faire
 
 	public boolean proceedWithAction(Joueur nomJoueur, int[] mot, int xPos, int yPos, Boolean horizontal) {
 
@@ -291,24 +291,24 @@ public class MatchIA {
 		}
 
 
-		// vérifier qu'il n'y a pas de majuscule
+		// vÃ©rifier qu'il n'y a pas de majuscule
 		for (int i = 0; i < mot.length; ++i) {
 			if ((65 <= mot[i]) && (mot[i] <= 90))
 				mot[i] += 32;
 		}
 
 		if (horizontal) {
-			// Vérifie primordialement dans l'ordre vertical chacune des lettres et à la fin
-			// il vérifie chaque extrême avec ses voisins horizontaux
+			// VÃ©rifie primordialement dans l'ordre vertical chacune des lettres et Ã  la fin
+			// il vÃ©rifie chaque extrÃªme avec ses voisins horizontaux
 			int topX = 0;
 			int subX = 0;
 			int letterCount = 0;
 
 			for (int i = yPos; i < (yPos + mot.length); ++i) {
 				letterCount = 1;
-				// Il commence à se déplacer vers la droite à partir du placement de la première
+				// Il commence Ã  se dÃ©placer vers la droite Ã  partir du placement de la premiÃ¨re
 				// lettre
-				// Je vérifie au-dessus de la ligne de lettres
+				// Je vÃ©rifie au-dessus de la ligne de lettres
 
 				if(plat.returnBoite(xPos, i) <= 6) {
 					subX = xPos;
@@ -317,7 +317,7 @@ public class MatchIA {
 						subX--;
 					}
 
-					// Je vérifie sous la ligne de lettres
+					// Je vÃ©rifie sous la ligne de lettres
 					topX = xPos;
 					while (plat.returnBoite(topX + 1, i) >= 5) {
 						letterCount++;
@@ -325,11 +325,11 @@ public class MatchIA {
 					}
 				}
 
-				// La lettre initiale est comptée deux fois, donc le compteur doit avoir une
-				// valeur supérieure à 2 pour être admis
+				// La lettre initiale est comptÃ©e deux fois, donc le compteur doit avoir une
+				// valeur supÃ©rieure Ã  2 pour Ãªtre admis
 				if (letterCount >= 2) {
 
-					// Une séquence de lettres a été trouvée, elle doit être calculée s'il s'agit
+					// Une sÃ©quence de lettres a Ã©tÃ© trouvÃ©e, elle doit Ãªtre calculÃ©e s'il s'agit
 					// d'un mot reconnaissable
 					String possibleMot = "";
 					for (int j = subX; j <= topX; ++j) { //
@@ -341,8 +341,7 @@ public class MatchIA {
 
 					if (dico.contains('"' + possibleMot + '"') && !isWordUsed(possibleMot)) {
 
-						// Le mot trouvé a été reconnu dans le dictionnaire !!!!!
-						System.out.println("Horizontal ver nice");
+						// Le mot trouvÃ© a Ã©tÃ© reconnu dans le dictionnaire !!!!!
 
 						newWordUsed(possibleMot);
 						nomJoueur.nouveauScore(
@@ -354,29 +353,29 @@ public class MatchIA {
 				}
 			}
 
-			// Fin des révisions verticales, il est maintenant temps de réviser horizontalement
+			// Fin des rÃ©visions verticales, il est maintenant temps de rÃ©viser horizontalement
 			int subY = yPos;
 			int topY = yPos + mot.length - 1;
 			letterCount = mot.length;
 
-			// Je vérifie à gauche du premier élément de la ligne de lettres
+			// Je vÃ©rifie Ã  gauche du premier Ã©lÃ©ment de la ligne de lettres
 			while (((int) plat.returnBoite(xPos, subY - 1) >= 5)) {
 				letterCount++;
 				subY--;
 			}
 
-			// Je vérifie à droite de la ligne de lettres
+			// Je vÃ©rifie Ã  droite de la ligne de lettres
 			while (((int) plat.returnBoite(xPos, topY + 1) >= 5)) {
 				letterCount++;
 				topY++;
 			}
 
 
-			// Encore une fois, la lettre initiale est comptée deux fois, donc le compteur
-			// doit avoir une valeur supérieure à 2 pour être admis
+			// Encore une fois, la lettre initiale est comptÃ©e deux fois, donc le compteur
+			// doit avoir une valeur supÃ©rieure Ã  2 pour Ãªtre admis
 			if (letterCount > 2) {
 
-				// Une séquence de lettres a été trouvée, elle doit être calculée s'il s'agit
+				// Une sÃ©quence de lettres a Ã©tÃ© trouvÃ©e, elle doit Ãªtre calculÃ©e s'il s'agit
 				// d'un mot reconnaissable
 				String possibleMot = "";
 				Boolean usedPlateau = false;
@@ -394,7 +393,7 @@ public class MatchIA {
 
 				if (dico.contains('"' + possibleMot + '"') && !isWordUsed(possibleMot)) {
 
-					// Le mot trouvé a été reconnu dans le dictionnaire !!!!!
+					// Le mot trouvÃ© a Ã©tÃ© reconnu dans le dictionnaire !!!!!
 					newWordUsed(possibleMot);
 					nomJoueur.nouveauScore(
 							nomJoueur.verifierScore() + nomJoueur.calculerScore(mot, xPos, subY, true, plat));
@@ -407,8 +406,8 @@ public class MatchIA {
 			}
 
 		} else {
-			// Vérifie principalement dans l'ordre horizontal chacune des lettres et à la
-			// fin il vérifie chaque extrême avec ses voisins verticaux
+			// VÃ©rifie principalement dans l'ordre horizontal chacune des lettres et Ã  la
+			// fin il vÃ©rifie chaque extrÃªme avec ses voisins verticaux
 
 
 			int subY = yPos;
@@ -418,19 +417,19 @@ public class MatchIA {
 			for (int i = xPos; i < (xPos + mot.length); ++i) {
 				letterCount = 1;
 
-				// Commence à descendre du placement de la première lettre
+				// Commence Ã  descendre du placement de la premiÃ¨re lettre
 				subY = yPos;
 
-				// Si le mot a déjà été placé, ne vérifiez pas s'il crée un mot dans l'autre sens car il sera évidemment lié à un mot déjà créé
+				// Si le mot a dÃ©jÃ  Ã©tÃ© placÃ©, ne vÃ©rifiez pas s'il crÃ©e un mot dans l'autre sens car il sera Ã©videmment liÃ© Ã  un mot dÃ©jÃ  crÃ©Ã©
 				if(plat.returnBoite(i, yPos) <= 6) {
-					// Je vérifie à gauche du premier élément de la ligne de lettres
+					// Je vÃ©rifie Ã  gauche du premier Ã©lÃ©ment de la ligne de lettres
 					while (plat.returnBoite(i, subY - 1) >= 5) {
 						letterCount++;
 						subY--;
 					}
 
 					topY = yPos;
-					// Je vérifie à droite du même élément dans la rangée de lettres
+					// Je vÃ©rifie Ã  droite du mÃªme Ã©lÃ©ment dans la rangÃ©e de lettres
 					while (plat.returnBoite(i, topY + 1) >= 5) {
 						letterCount++;
 						topY++;
@@ -438,11 +437,11 @@ public class MatchIA {
 				}
 
 
-				// Encore une fois, la lettre initiale est comptée deux fois, donc le compteur
-				// doit avoir une valeur supérieure à 2 pour être admis
+				// Encore une fois, la lettre initiale est comptÃ©e deux fois, donc le compteur
+				// doit avoir une valeur supÃ©rieure Ã  2 pour Ãªtre admis
 				if (letterCount >= 2) {
 
-					// Une séquence de lettres a été trouvée, elle doit être calculée s'il s'agit
+					// Une sÃ©quence de lettres a Ã©tÃ© trouvÃ©e, elle doit Ãªtre calculÃ©e s'il s'agit
 					// d'un mot reconnaissable
 					String possibleMot = "";
 					for (int j = subY; j <= topY; ++j) { //
@@ -453,7 +452,7 @@ public class MatchIA {
 					}
 
 					if (dico.contains('"' + possibleMot + '"') && !isWordUsed(possibleMot)) {
-						// Le mot trouvé a été reconnu dans le dictionnaire !!!!!
+						// Le mot trouvÃ© a Ã©tÃ© reconnu dans le dictionnaire !!!!!
 
 						newWordUsed(possibleMot);
 						nomJoueur.nouveauScore(
@@ -465,30 +464,30 @@ public class MatchIA {
 				}
 			}
 
-			// Fin des révisions horizontalement, il est maintenant temps de réviser
+			// Fin des rÃ©visions horizontalement, il est maintenant temps de rÃ©viser
 			// verticalement
 			int subX = xPos;
 			int topX = xPos + mot.length - 1;
 			letterCount = mot.length;
 
-			// Je vérifie au-dessus du premier élément de la ligne de lettres
+			// Je vÃ©rifie au-dessus du premier Ã©lÃ©ment de la ligne de lettres
 			while (plat.returnBoite(subX - 1, yPos) >= 5) {
 				letterCount++;
 				subX--;
 			}
 
-			// Je vérifie sous la ligne de lettres
+			// Je vÃ©rifie sous la ligne de lettres
 			while (plat.returnBoite(topX + 1, yPos) >= 5) {
 				letterCount++;
 				topX++;
 			}
 
-			// Encore une fois, la lettre initiale est comptée deux fois, donc le compteur
-			// doit avoir une valeur supérieure à 2 pour être admis
+			// Encore une fois, la lettre initiale est comptÃ©e deux fois, donc le compteur
+			// doit avoir une valeur supÃ©rieure Ã  2 pour Ãªtre admis
 			if (letterCount > 2) {
-				//System.out.println("Entré car il y a 3 lettres ou plus");
+				//System.out.println("EntrÃ© car il y a 3 lettres ou plus");
 
-				// Une séquence de lettres a été trouvée, elle doit être calculée s'il s'agit
+				// Une sÃ©quence de lettres a Ã©tÃ© trouvÃ©e, elle doit Ãªtre calculÃ©e s'il s'agit
 				// d'un mot reconnaissable
 				String possibleMot = "";
 				Boolean usedPlateau = false;
@@ -505,7 +504,7 @@ public class MatchIA {
 					return false;
 
 				if (dico.contains('"' + possibleMot + '"') && !isWordUsed(possibleMot)) {
-					// Le mot trouvé a été reconnu dans le dictionnaire !!!!!
+					// Le mot trouvÃ© a Ã©tÃ© reconnu dans le dictionnaire !!!!!
 
 					newWordUsed(possibleMot);
 					nomJoueur.nouveauScore(
@@ -519,7 +518,7 @@ public class MatchIA {
 			}
 		}
 
-		// Si il y a quelque combination de mot trouvï¿½, supprimer les lettres
+		// Si il y a quelque combination de mot trouvÃ¯Â¿Â½, supprimer les lettres
 		// utilises.
 		if (combinations > 0) {
 			// Supprimer les lettres de la main (sans compter les lettres que sont deja sur
@@ -529,7 +528,7 @@ public class MatchIA {
 			// mot: C'est le mot qui est forme sur le Plateau
 			// main: C'est la main avec toutes les lettres a ta disposition.
 			int j; // index pour trouver la position de la lettre selectione (mot[i]) dans la main
-			Boolean trouve; // Boolean qui stope si le lettre est trouvï¿½
+			Boolean trouve; // Boolean qui stope si le lettre est trouvÃ¯Â¿Â½
 			for (int i = 0; i < mot.length; ++i) {
 
 				if (!(mot[i] == plat.returnBoite(xPos, yPos + i) && horizontal)
@@ -539,10 +538,10 @@ public class MatchIA {
 
 					j = 0; // On doit trouver une AUTRE lettre dans notre main, donc on restart index et Boolean
 					trouve = false;
-					while (j < 7 && !trouve) { // recherche un a un sur la main jusqu'a que la lettre soit trouvï¿½ dans la main ....
+					while (j < 7 && !trouve) { // recherche un a un sur la main jusqu'a que la lettre soit trouvÃ¯Â¿Â½ dans la main ....
 						if (mot[i] == nomJoueur.verifierLettre(j)) { // si la lettre que je suis maintenant est la  lettre chercher
 							this.setNombreLettre(nomJoueur.echangerLettre(j, getNombreLettre()));
-							trouve = true; // pour ï¿½viter la boucle infini, clore cette recherche
+							trouve = true; // pour Ã¯Â¿Â½viter la boucle infini, clore cette recherche
 						} else
 							j++; // Je n'ai pas trouve, on passe a l'index suivant
 					} // Fin de la recherche pour la lettre utiliser
@@ -565,13 +564,13 @@ public class MatchIA {
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("\n\n\n === EXEMPLE D'UNE GAME EN MODE VS ORDINATEUR === \n");
-		System.out.print("\n\n\tEntrée vos pseudo!");
+		System.out.print("\n\n\tEntrÃ©e vos pseudo!");
 		System.out.print("\n\tNom du Joueur: ");
 		String premiereJoueur = scanner.nextLine();
-		System.out.print("\n\tQuelle difficulté ?");
+		System.out.print("\n\tQuelle difficultÃ© ?");
 		System.out.print("\n\t1: Gentil");
 		System.out.print("\n\t2: Normal");
-		System.out.print("\n\t3: Sans pitié");
+		System.out.print("\n\t3: Sans pitiÃ©");
 		System.out.print("\n\n\tQuelle option choisi tu ?: ");
 		int difficulte = Integer.parseInt(scanner.nextLine());
 		MatchIA gameInstance = new MatchIA(premiereJoueur, difficulte); // A MODIFIER
@@ -599,7 +598,7 @@ public class MatchIA {
 				choice = Integer.parseInt(scanner.nextLine());
 				switch (choice) {
 				case 1: // Jouer avec les mots dispo
-					System.out.print("\n\nQuel mot veux-tu formé ?: ");
+					System.out.print("\n\nQuel mot veux-tu formÃ© ?: ");
 					String readWord = scanner.nextLine();
 
 					System.out.print("Quelle position? (x): ");
@@ -617,14 +616,14 @@ public class MatchIA {
 
 					if (gameInstance.proceedWithAction(gameInstance.tourActuel(), motArray, readXPos, readYPos,
 							readHorizontal == 1)) {
-						System.out.print("\n\nMot inséré! Félicitations!! ");
+						System.out.print("\n\nMot insÃ©rÃ©! FÃ©licitations!! ");
 						System.out.print("\n\nJoueur " + gameInstance.tourActuel().verifierNom() + " a un total de "
 								+ gameInstance.tourActuel().verifierScore() + " points!");
 
 						if (gameInstance.asGagne()) {
 							Joueur gagnant = gameInstance.pointsFin();
 							if (gagnant.verifierNom() == "Match Null") {
-								// La partie s'est terminée par une égalité (les deux joueurs ont le même nombre
+								// La partie s'est terminÃ©e par une Ã©galitÃ© (les deux joueurs ont le mÃªme nombre
 								// de points)
 								System.out.print("\n\n\t\t === MATCH NULL ===");
 								System.out.print("\n\n\t\t   Classement final!!");
@@ -648,8 +647,8 @@ public class MatchIA {
 							iterations++;
 						}
 					} else {
-						System.out.print("\n\nÇa ne marchera pas ... ");
-						System.out.print("\nRéessayer ^^");
+						System.out.print("\n\nÃ‡a ne marchera pas ... ");
+						System.out.print("\nRÃ©essayer ^^");
 					}
 					break;
 				case 2: // Jetter lettres
@@ -694,7 +693,7 @@ public class MatchIA {
 						System.out.print("\n\n\t\t=== There aren't more combinations available!!! ===");
 						if (gameInstance.tourActuel().verifierScore() == gameInstance.adversaireActuel()
 								.verifierScore()) {
-							// La partie s'est terminée par une égalité (les deux joueurs ont le même nombre
+							// La partie s'est terminÃ©e par une Ã©galitÃ© (les deux joueurs ont le mÃªme nombre
 							// de points)
 							System.out.print("\n\n\t\t === MATCH NULL ===");
 							System.out.print("\n\n\t\t   Classement final!!");
@@ -711,7 +710,7 @@ public class MatchIA {
 									+ gameInstance.joueur.verifierScore() + " points!");
 							System.out.print("\n\t\tIA: " + gameInstance.ordi.verifierScore() + " points!");
 						}
-						// Déclarez la fin du jeu
+						// DÃ©clarez la fin du jeu
 						iterations = 5;
 					} else {
 						// Le jeu n'a pas pris fin pour le moment, passez au tour suivant
@@ -725,7 +724,7 @@ public class MatchIA {
 					permutationSearch pS = new permutationSearch(dicoAnagram, dico, plat,
 							gameInstance.tourActuel().verifierMain(), gameInstance.usedWords);
 
-					System.out.println(pS.totalPossibleWords() + " résultats trouvés! \n");
+					System.out.println(pS.totalPossibleWords() + " rÃ©sultats trouvÃ©s! \n");
 
 					if (pS.totalPossibleWords() > 25) {
 						System.out
@@ -749,18 +748,18 @@ public class MatchIA {
 				System.out.println("\n\tL'ordi fait son action...");
 				switch (gameInstance.completeIATurn()) {
 				case 1:
-					// Tous les tours nécessaires pour terminer le jeu sont passés, terminer le jeu
+					// Tous les tours nÃ©cessaires pour terminer le jeu sont passÃ©s, terminer le jeu
 					iterations = 5;
 					break;
 				case 0:
-					// IA a inséré une lettre
+					// IA a insÃ©rÃ© une lettre
 					System.out.print("\n\nJoueur " + gameInstance.tourActuel().verifierNom() + " a un total de "
 							+ gameInstance.tourActuel().verifierScore() + " points!");
 
 					if (gameInstance.asGagne()) {
 						Joueur gagnant = gameInstance.pointsFin();
 						if (gagnant.verifierNom() == "Match Null") {
-							// La partie s'est terminée par une égalité (les deux joueurs ont le même nombre
+							// La partie s'est terminÃ©e par une Ã©galitÃ© (les deux joueurs ont le mÃªme nombre
 							// de points)
 							System.out.print("\n\n\t\t === MATCH NULL ===");
 							System.out.print("\n\n\t\t   Classement final!!");
@@ -785,7 +784,7 @@ public class MatchIA {
 					}
 					break;
 				case -1:
-					// IA ne peux pas insérer de lettre , IA échangé ses lettres
+					// IA ne peux pas insÃ©rer de lettre , IA Ã©changÃ© ses lettres
 					System.out.print("\n\n L'IA a decider jetter ses lettres...");
 					gameInstance.suivantTour();
 					System.out.print("\n\n\tStatut actuel!");
@@ -795,7 +794,7 @@ public class MatchIA {
 					iterations++;
 					break;
 				case -2:
-					// IA ne peut pas échanger ses lettres et a passé le tour sans rien faire de pertinent
+					// IA ne peut pas Ã©changer ses lettres et a passÃ© le tour sans rien faire de pertinent
 					System.out.print("\n\n L'IA NEW MESSAGE THAT SAYS THAT THE IA CANT DO ANYTHING AT ALL...");
 					gameInstance.suivantTour();
 					System.out.print("\n\n\tStatut actuel!");
@@ -817,4 +816,4 @@ public class MatchIA {
 		this.nombreLettre = nombreLettre;
 	}
 
-} // Classe MatchIA Terminé
+} // Classe MatchIA TerminÃ©
