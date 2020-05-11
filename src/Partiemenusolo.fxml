@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1009.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Partiecontrol">
+   <children>
+      <SplitPane dividerPositions="0.5350584307178631" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="765.0" minWidth="1200.0" prefHeight="765.0" prefWidth="1200.0" AnchorPane.bottomAnchor="235.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="600.0" minWidth="600.0" prefHeight="783.0" prefWidth="602.0" />
+          <AnchorPane minHeight="600.0" minWidth="589.0" prefHeight="809.0" prefWidth="589.0" stylesheets="@../src/partie.css">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#07416b3b" height="774.0" layoutX="2.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="583.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-1.0" />
+                  <Button fx:id="sugg" layoutX="306.0" layoutY="577.0" mnemonicParsing="false" onAction="#suggester" prefHeight="55.0" prefWidth="246.0" style="-fx-background-color: #99cad9;" text="Afficher suggestion">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect></Button>
+                  <Button fx:id="valider" layoutX="33.0" layoutY="577.0" mnemonicParsing="false" onAction="#valid" prefHeight="55.0" prefWidth="246.0" style="-fx-background-radius: 90; -fx-background-size: 50; -fx-background-color: green;" text="Valider le jeu">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect></Button>
+                  <Button fx:id="quit" layoutX="306.0" layoutY="652.0" mnemonicParsing="false" onAction="#quitter" prefHeight="55.0" prefWidth="246.0" style="-fx-background-color: #99cad9;" text="Abandon">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect></Button>
+                  <Button fx:id="jeter" layoutX="33.0" layoutY="652.0" mnemonicParsing="false" onAction="#jete" prefHeight="55.0" prefWidth="246.0" style="-fx-background-color: #99cad9;" text="Passer Tour">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect></Button>
+                  <TableView fx:id="suggestionmain" layoutX="33.0" layoutY="214.0" prefHeight="324.0" prefWidth="524.0" style="-fx-background-color: gray;">
+                    <columns>
+                      <TableColumn fx:id="suggestions" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" resizable="false" text="Boîte à suggestions" />
+                        <TableColumn fx:id="point" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" text="Point" />
+                        <TableColumn maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" text="X" fx:id="x" />
+                        <TableColumn fx:id="y" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" text="Y" />
+                        <TableColumn fx:id="sens" maxWidth="113.0" minWidth="98.0" prefWidth="113.0" resizable="false" text="Sens" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+                  <ImageView fx:id="j1img" fitHeight="107.0" fitWidth="108.0" layoutX="33.0" layoutY="48.0" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@Images/user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="j2img" fitHeight="67.0" fitWidth="67.0" layoutX="462.0" layoutY="41.0" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@Images/bot.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nj1" layoutX="312.0" layoutY="60.0" prefHeight="48.0" prefWidth="141.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nj2" alignment="CENTER" centerShape="false" layoutX="399.0" layoutY="103.0" prefHeight="48.0" prefWidth="192.0" text="Label">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" centerShape="false" layoutX="434.0" layoutY="133.0" prefHeight="48.0" prefWidth="85.0" text="Score :">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" centerShape="false" layoutX="208.0" layoutY="94.0" prefHeight="48.0" prefWidth="107.0" text="Score :">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score2" alignment="CENTER" centerShape="false" layoutX="495.0" layoutY="133.0" prefHeight="48.0" prefWidth="85.0" text="0">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="133.0" layoutY="60.0" prefHeight="48.0" prefWidth="183.0" text="Joueur actuel : ">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score1" alignment="CENTER" centerShape="false" layoutX="306.0" layoutY="94.0" prefHeight="48.0" prefWidth="93.0" text="0">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="computing" layoutX="500.0" layoutY="85.0" prefHeight="18.0" prefWidth="93.0" progress="0.0" rotate="-90.0" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

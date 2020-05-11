@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
+   <children>
+      <SplitPane dividerPositions="0.5" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1200.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="500.0" minWidth="600.0" prefHeight="824.0" prefWidth="624.0" />
+          <AnchorPane minHeight="500.0" minWidth="600.0" prefHeight="687.0" prefWidth="600.0" stylesheets="@application.css">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e8e8" height="757.0" layoutX="18.0" layoutY="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="579.0" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0" />
+                  <Button fx:id="diff3" layoutX="433.0" layoutY="431.0" mnemonicParsing="false" onAction="#lunatic" prefHeight="56.0" prefWidth="104.0" text="Lunatic">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="unijoueur" layoutX="173.0" layoutY="323.0" mnemonicParsing="false" onAction="#solo" prefHeight="87.0" prefWidth="364.0" style="-fx-background-color: lightgreen; -fx-background-radius: 190px;" text="Solo" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="multijoueur" layoutX="173.0" layoutY="221.0" mnemonicParsing="false" onAction="#multi" prefHeight="87.0" prefWidth="364.0" text="Multijoueur" textAlignment="CENTER">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <font>
+                        <Font name="Arial" size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="diff1" layoutX="173.0" layoutY="431.0" mnemonicParsing="false" onAction="#facile" prefHeight="56.0" prefWidth="104.0" text="Facile">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="diff2" layoutX="303.0" layoutY="431.0" mnemonicParsing="false" onAction="#normal" prefHeight="56.0" prefWidth="104.0" style="-fx-background-color: red;" text="Normal">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="29.0" layoutY="549.0" prefHeight="56.0" prefWidth="218.0" style="-fx-background-color: lightgreen;" text="Nom du joueur 1 :">
+                     <font>
+                        <Font name="Arial" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="633.0" prefHeight="56.0" prefWidth="218.0" style="-fx-background-color: lightgreen;" text="Nom du joueur 2 :">
+                     <font>
+                        <Font name="Arial" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="104.0" fitWidth="113.0" layoutX="56.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/multiplayer.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="81.0" fitWidth="111.0" layoutX="68.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/bot.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="253.0" fitWidth="541.0" layoutX="35.0" layoutY="-7.0" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Scrabble-logo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="nom1" layoutX="260.0" layoutY="553.0" prefHeight="47.0" prefWidth="311.0" text="Joueur1">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></TextField>
+                  <TextField fx:id="nom2" layoutX="260.0" layoutY="637.0" prefHeight="47.0" prefWidth="311.0" text="Joueur2" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

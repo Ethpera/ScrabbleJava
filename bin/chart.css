@@ -1,0 +1,42 @@
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+.myDialog{
+    -fx-background-color: green;
+    -fx-max-width: 1000px;
+    -fx-max-height: 1000px;
+    -fx-min-width: 1000px;
+    -fx-min-height: 500px;
+
+}
+.myDialog .Image{
+	-fx-alignment: center;
+}
+.myDialog .content{
+	-fx-alignment: center;
+}
+
+.myDialog > *.label.content{
+    -fx-font-size: 40px;
+    -fx-font-style: italic;
+	-fx-text-fill: yellow;
+	-fx-alignment: center;
+
+}
+.myDialog:header *.header-panel{
+    -fx-background-color: white;
+	-fx-alignment: center;
+}
+.myDialog:header *.header-panel *.label{
+
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+
+}

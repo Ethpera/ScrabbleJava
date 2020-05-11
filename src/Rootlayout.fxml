@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="0.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar prefHeight="0.0" stylesheets="@menu.css" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Système de score">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Les différentes valeurs des lettres :&#10;Les lettres A, E, I, L, N, O, R, S, T, U valent 1 point,&#10;les lettres D, G, M valent 2 points,&#10;les lettres B, C, P valent 3 points,&#10;les lettres F, H, V valent 4 points,&#10;les lettres J, Q valent 8 points,&#10;les lettres K, W, X, Y, Z valent 10 points,&#10;&#10;Les différentes valeurs des cases :&#10;Case bleu ciel : Lettre compte double&#10;Case bleu foncé : Lettre compte triple&#10;Case rose : Mot compte double&#10;Case rouge : Mot compte triple&#10;&#10;Attribution des points :&#10;Les points obtenus lors du tour sont calculés en fonction de la &#10;valeur des lettres posées, des lettres déjà posées complétant le &#10;ou les mots saisis ainsi que des modificateurs des cases de couleurs &#10;différentes (lettre/mot compte double/triple) et sont additionnés &#10;au score du joueur.&#10;&#10;Attention :&#10;-    Les multiplicateurs des cases sont cumulables. &#10;Par exemple si un mot est posé sur 2 cases « compte triple »&#10;alors la valeur du mot est multipliée par 9.&#10;-    Chaque case multiplicatrice ne sert qu’une fois !&#10;&#10;Si les sept lettres tirées au sort ont été posées d’un seul coup, &#10;on a alors fait un « Scrabble », un bonus de 50 points est donc obtenu." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Règles générales">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Règles générales:&#10;&#10;Chacun son tour, les 2 joueurs jouent des lettres parmi les 7 de leur main afin de former sur le plateau un mot présent dans le dictionnaire.&#10;Le nouveau mot créé doit être rattaché au reste des lettres présentes sur le plateau, il ne peut pas être formé n'importe où.&#10;Une fois les lettres posées, on calcule les points attribués au joueur qui vient de jouer avant de piocher des lettres afin de d'avoir de nouveau 7 lettres en main (si possible) et de terminer son tour.&#10;&#10;Comment jouer:&#10;&#10;Lors de votre tour, vous pouvez effectuer 4 types d'actions:&#10;&#10;- Saisir un mot: Pour pouvoir placer un mot sur la grille, &#10;  vous devez déplacer les lettres de votre chevalet en cliquant dessus et en les faisant glisser jusqu'à la case souhaitée.&#10;  Une fois toutes les lettres en places, il suffit de cliquer sur valider afin de confirmer et terminer votre tour.&#10;&#10;- Jeter des Lettres: Si vous voulez vous débarasser de certaines lettres, selectionnez les en cliquant sur les cases rouges en dessous. &#10;  Après avoir choisi toutes les lettres dont vous voulez vous débarasser, il suffit de cliquer sur le bouton &quot;jeter lettres&quot;, &#10;  le jeu remplacera votre selection et votre tour se terminera.&#10;&#10;- Voir les différents mots saisissables: Afin de voir les différents mots que vous pouvez placer sur le plateau, &#10;   il suffit de cliquer sur le bouton &quot;Afficher Suggestions&quot;, le tout s'affichera dans la boîte à suggestion située au dessus. &#10;   Cette action ne termine pas votre tour.&#10;&#10;- Abandonner la partie: Cliquer sur ce bouton termine prématurément la partie et octroie la victoire à l'adversaire.&#10;&#10;Fin de partie:&#10;La partie se termine quand un joueur pose les dernières lettres de sa main alors que la pioche est vide. &#10;Si ils ne peuvent plus rien poser, ils doivent exprimer leur incapacité à continuer de jouer en passant 3 fois chacun.&#10;&#10;Dans les deux cas, le joueur possédant le plus de points remporte la partie.&#10;&#10;Notes Importantes:&#10;- Lors du premier tour, où aucune lettres ne sont posées, il faut obligatiorement jouer sur la case centrale (case comptant comme une case mot compte double).&#10;- Plusieurs &quot;sous-mots&quot; peuvent être formés durant un tour en même temps qu'un autre, &#10;  du moment que les toutes lettres posées sont rattachées à un seul et même mot &#10;  (ce mot sera compté en plus lors de la détermination des points)." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Crédits">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Jeu réalisé dans le cadre du projet de fin de&#10;seconde année de license informatique par :&#10;-Grégory Lahalle&#10;-Brayan Weber&#10;-Alexandre Ledieu&#10;-Manon Rivayran" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
