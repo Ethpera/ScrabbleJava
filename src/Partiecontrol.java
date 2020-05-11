@@ -159,7 +159,7 @@ public class Partiecontrol {
 	ArrayList<String> uM = new ArrayList<>();
 
 	public void initialize(Main test) {
-
+		System.out.println();
 		this.test = test;
 		nj1.setText(test.getNom1().getText());
 		nj2.setText(test.getNom2().getText());
